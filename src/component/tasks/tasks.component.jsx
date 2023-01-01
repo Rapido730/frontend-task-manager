@@ -38,7 +38,7 @@ export const TasksComponent = () => {
   };
 
   return (
-    <div className="to-do-conatiner">
+    <div className="to-do-container">
       <input
         className={"form-input"}
         type="search"

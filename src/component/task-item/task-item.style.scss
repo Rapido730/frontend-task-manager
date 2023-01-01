@@ -1,0 +1,15 @@
+.task-item-container{
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+
+    .removeButton{
+        padding: 5px 10px;
+        background-color:white;
+        &:hover{
+            background-color: black;
+            color:white    
+        }
+        
+    }
+}

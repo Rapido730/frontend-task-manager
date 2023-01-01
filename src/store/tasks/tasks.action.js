@@ -10,3 +10,7 @@ export const Add_Task = (task) => {
 export const Update_Task_Data = (updated_task) => {
     return {type:Tasks_Action_Types.Update_Task_Data,payload:updated_task}
 }
+
+export const Delete_Task = (task) => {
+  return {type:Tasks_Action_Types.Delete_Task_From_List,payload:task}
+}

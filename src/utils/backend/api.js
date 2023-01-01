@@ -46,10 +46,11 @@ export const patchMethod = async (data, link, config = {}) => {
   }
 };
 
-export const updateTask = async (token) => {
+export const updateTask = async (token,task) => {
+  const {description,completed} = task;
   const data = {
-    description: "description",
-    completed: false,
+    description: description,
+    completed: completed,
   };
 
   const Authorization = "Bearer " + token;
@@ -59,7 +60,7 @@ export const updateTask = async (token) => {
       Authorization: Authorization,
     },
   };
-  const res = await patchMethod(data, "/tasks/update/kick", config);
+  const res = await patchMethod(data, `/tasks/update/${description}`, config);
   return res;
 };
 
@@ -73,7 +74,7 @@ export const deleteMethod = async (link, config = {}) => {
   }
 };
 
-export const deleteTask = async (AuthToken) => {
+export const deleteTaskMethod = async (AuthToken,description) => {
   const Authorization = "Bearer " + AuthToken;
   const config = {
     headers: {
@@ -82,7 +83,7 @@ export const deleteTask = async (AuthToken) => {
   };
 
   console.log(Authorization);
-  const res = await deleteMethod("/tasks/delete/wash", config);
+  const res = await deleteMethod(`/tasks/delete/${description}`, config);
   return res;
 };
 
