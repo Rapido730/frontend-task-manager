@@ -1,28 +1,25 @@
-import { Fragment,useEffect } from "react";
+import { Fragment } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./navigation.style.scss";
 import { ReactComponent as AppLogo } from "../../assests/logo.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { postMethod,SignOutUser } from "../../utils/backend/api";
 import { SetCurrentUser } from "../../store/user/user.action";
+import { Fetch_Task_List } from "../../store/tasks/tasks.action";
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const CurrentUser = useSelector((state) => state.user.CurrentUser);
-  console.log(CurrentUser)
-
-  const signOutHandler = () => {
-    // SignOutUser();
-    dispatch(SetCurrentUser(null));
-    
-
+  const CurrentUserdata = useSelector((state) => state.user.CurrentUserdata);
+  // const token = useSelector((state) => state.user.CurrentUser);
+  let CurrentUser = null;
+  if (CurrentUserdata != null) {
+    const { user, token } = CurrentUserdata;
+    CurrentUser = user;
   }
-
-
-  useEffect(() => {
-    console.log(CurrentUser);
-  }, [CurrentUser]);
-
+  const signOutHandler = () => {
+    dispatch(Fetch_Task_List([]));
+    dispatch(SetCurrentUser(null));
+  };
+  
   return (
     <Fragment>
       <div className="navigation">
@@ -30,8 +27,13 @@ const Navigation = () => {
           <AppLogo className="logo" />
         </div>
         <div className="app-link-conatiner">
+          <Link className="app-link" to="/tasks">
+            Tasks
+          </Link>
           {CurrentUser ? (
-            <span onClick={signOutHandler}>Sign Out</span>
+            <Link className="app-link" to="/signin">
+              <span onClick={signOutHandler}>Sign Out</span>
+            </Link>
           ) : (
             <Link className="app-link" to="/signin">
               Sign In

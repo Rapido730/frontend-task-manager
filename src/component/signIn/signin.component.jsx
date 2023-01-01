@@ -1,32 +1,38 @@
 import FormInput from "../form-input/form-input.component";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SetCurrentUser } from "../../store/user/user.action";
 
 
 import "./signIn.style.scss";
-import { postMethod } from "../../utils/backend/api";
+import { postMethod,getMethod, getAllTask, deleteMethod, deleteTask, updateTask } from "../../utils/backend/api";
 
 
 const SignIn = () => {
   const dispatch = useDispatch();
-
+  const CurrentUserdata = useSelector((state)=> state.user.CurrentUserdata);
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
   const [Response, SetResponse] = useState("");
 
-  const createTask = async() => {
-    const data = {
-    "description": "zeo"
-    }
-    const res = await postMethod(data,"/tasks/create");
+  
 
+  // const retrieveTask = async() => {
+  //   const token = CurrentUserdata.token;
+  //   const res = await getAllTask(token);
+  //   console.log(res);
+  // }
+  const func = () => {
+    const token = CurrentUserdata.token;
+    // deleteTask(token);
+    // updateTask(token);
   }
+
   const UserLogin = async (data) => {
     const res =  await postMethod(data,"/users/login");
 
     if(res){
-      const user = res.data.user;
+      const user = res.data;
       dispatch(SetCurrentUser(user));
       return `Name : ${res.data.user.name} \n Age : ${res.data.user.age}`;
     }
@@ -76,7 +82,7 @@ const SignIn = () => {
         <button className="submit" type="submit" > Sign In </button>
       </form>
       <p>{Response}</p>
-      <button onClick={createTask}></button>
+      <button onClick={func}></button>
     </div>
   );
 };
