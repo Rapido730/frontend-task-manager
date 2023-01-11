@@ -1,22 +1,23 @@
-
 import { User_action_types } from "./user.types";
 
 const INITIAL_STATE = {
-    CurrentUserdata:null
-}
+  CurrentUserdata: null,
+};
 
-export const UserReducer = (state=INITIAL_STATE,action) => {
-    const {type,payload} = action;
-    // console.log("reducer")
-    // console.log(state);
-    switch(type){
-        case User_action_types.SetCurrentUser:
-            return {...state,CurrentUserdata:payload};
-        case User_action_types.persistREHYDRATE:
-            // console.log(payload);
-            state = {...payload.user}
-            return state
-        default:
-            return {...state}
-    }
-}
+export const UserReducer = (state = INITIAL_STATE, action) => {
+  const { type, payload } = action;
+  // console.log("reducer")
+  // console.log(state);
+  switch (type) {
+    case User_action_types.SetCurrentUser:
+      return { ...state, CurrentUserdata: payload };
+    case User_action_types.persistREHYDRATE:
+      // console.log(payload);
+      if (payload !== null) {
+        state = { ...payload.user };
+      }
+      return state;
+    default:
+      return { ...state };
+  }
+};
