@@ -29,7 +29,7 @@ const App = () => {
     <div className="app-container">
       <Routes>
         <Route path="/" element={<Navigation />}>
-          <Route index element={<Home />} />
+          <Route index element={<TasksComponent />} />
           <Route path="signin" element={<Auth />} />
           <Route path="tasks" element={<TasksComponent />} />
         </Route>
