@@ -25,6 +25,10 @@ export const TasksComponent = () => {
   // console.log(tasks)
   const AddTaskHandler = async () => {
     // console.log(TaskInput)
+    if(CurrentUserdata===null){
+      alert("first login in your account!")
+      return 
+    }
     const res = await createTask(CurrentUserdata.token, TaskInput);
     console.log(res);
     if (res !== null) {

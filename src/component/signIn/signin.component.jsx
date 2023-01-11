@@ -78,11 +78,13 @@ const SignIn = () => {
           value={Password}
         />
 
-        
-        <button className="submit" type="submit" > Sign In </button>
+        <button className="submit" type="submit">
+          {" "}
+          Sign In{" "}
+        </button>
       </form>
       <p>{Response}</p>
-      <button onClick={func}></button>
+      <button className="buttons-container" onClick={func}></button>
     </div>
   );
 };

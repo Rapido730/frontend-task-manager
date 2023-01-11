@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 export const TasksReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
-  console.log("taskreducer");
+  // console.log("taskreducer");
   switch (type) {
     case Tasks_Action_Types.Fetch_Task_List:
       return { ...state, tasks: payload };

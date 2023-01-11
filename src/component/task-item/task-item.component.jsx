@@ -10,7 +10,7 @@ export const TaskItem = ({task}) => {
     const CurrentUserdata = useSelector((state) => state.user.CurrentUserdata);
     const dispatch = useDispatch();
     const {description,completed} = task;
-    console.log(description,completed);
+    // console.log(description,completed);
     // const status = completed?"finished":"pending";
     // console.log(task.task)
     const taskCompleted = () => {

@@ -82,7 +82,7 @@ export const deleteTaskMethod = async (AuthToken,description) => {
     },
   };
 
-  console.log(Authorization);
+  // console.log(Authorization);
   const res = await deleteMethod(`/tasks/delete/${description}`, config);
   return res;
 };
@@ -95,7 +95,7 @@ export const getAllTask = async (AuthToken) => {
     },
   };
 
-  console.log(Authorization);
+  // console.log(Authorization);
   const res = await getMethod("/tasks/readAll", config);
   return res;
 };
