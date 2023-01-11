@@ -36,7 +36,7 @@ export const TaskItem = ({task}) => {
           />
         </label>
         <h2>{description}</h2>
-        <button className="removeButton" onClick={deleteTask}>X</button>
+        <button className="removeButton" onClick={deleteTask}>Delete</button>
       </div>
     );
 }

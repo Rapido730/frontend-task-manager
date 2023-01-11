@@ -10,6 +10,8 @@
   justify-content: space-between;
   margin-bottom: 25px;
   padding: 10px;
+  border-bottom: 1px solid black;
+  margin-bottom: 50px;
 
   .logo-container {
     height: 100%;
@@ -26,11 +28,15 @@
     width: 50%;
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    // align-items: center;
+    // justify-content: flex-end;
+    // text-align:center;
+
+    
+    
 
     .app-link {
-      padding: 10px 15px;
+      
       cursor: pointer;
     }
   }

@@ -85,7 +85,7 @@ const SignUp = () => {
           onChange={handlePasswordChange}
           value={Password}
         />
-        <Button button_type={'inverted'} type="submit" >Submit</Button>
+        <Button  type="submit" >Sign up</Button>
       </form>
       <p>{Response}</p>
     </div>

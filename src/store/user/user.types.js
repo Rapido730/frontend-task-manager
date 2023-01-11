@@ -1,4 +1,4 @@
 export const User_action_types = {
-  SetCurrentUser: "SetCurrentUser",
+  SetCurrentUser: "user/SetCurrentUser",
   persistREHYDRATE: "persist/REHYDRATE",
 };

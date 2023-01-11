@@ -61,7 +61,7 @@ const SignIn = () => {
           value={Password}
         />
 
-        <Button button_type={"inverted"} type="submit">
+        <Button  type="submit">
           Sign In
         </Button>
       </form>
