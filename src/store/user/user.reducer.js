@@ -12,7 +12,7 @@ export const UserReducer = (state = INITIAL_STATE, action) => {
     case User_action_types.SetCurrentUser:
       return { ...state, CurrentUserdata: payload };
     case User_action_types.persistREHYDRATE:
-      // console.log(payload);
+      console.log(payload);
       if (payload !== null) {
         state = { ...payload.user };
       }
