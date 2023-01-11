@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import FormInput from "../form-input/form-input.component"
-
+import { Button } from "../Button/button.component";
 import "./signup.style.scss"
 import { postMethod} from "../../utils/backend/api";
 
@@ -16,7 +16,7 @@ const UserReg = async (data) => {
 
 const SignUp = () => {
   const [Name, SetName] = useState("");
-  const [Age, SetAge] = useState(0);
+  const [Age, SetAge] = useState("");
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
   const [Response,SetResponse] = useState("");
@@ -63,6 +63,7 @@ const SignUp = () => {
           type="number"
           required
           name="Age"
+          min = "0"
           onChange={handleAgeChange}
           value={Age}
         />
@@ -84,7 +85,7 @@ const SignUp = () => {
           onChange={handlePasswordChange}
           value={Password}
         />
-        <button type="submit" >Submit</button>
+        <Button button_type={'inverted'} type="submit" >Submit</Button>
       </form>
       <p>{Response}</p>
     </div>

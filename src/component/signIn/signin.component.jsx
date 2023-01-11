@@ -1,45 +1,29 @@
 import FormInput from "../form-input/form-input.component";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { SetCurrentUser } from "../../store/user/user.action";
 
+import { Button } from "../Button/button.component";
 
 import "./signIn.style.scss";
-import { postMethod,getMethod, getAllTask, deleteMethod, deleteTask, updateTask } from "../../utils/backend/api";
-
+import { postMethod } from "../../utils/backend/api";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const CurrentUserdata = useSelector((state)=> state.user.CurrentUserdata);
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
   const [Response, SetResponse] = useState("");
 
-  
-
-  // const retrieveTask = async() => {
-  //   const token = CurrentUserdata.token;
-  //   const res = await getAllTask(token);
-  //   console.log(res);
-  // }
-  const func = () => {
-    const token = CurrentUserdata.token;
-    // deleteTask(token);
-    // updateTask(token);
-  }
-
   const UserLogin = async (data) => {
-    const res =  await postMethod(data,"/users/login");
+    const res = await postMethod(data, "/users/login");
 
-    if(res){
+    if (res) {
       const user = res.data;
       dispatch(SetCurrentUser(user));
       return `Name : ${res.data.user.name} \n Age : ${res.data.user.age}`;
     }
     return "There is some error!";
-    
   };
-
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
@@ -50,11 +34,10 @@ const SignIn = () => {
     SetPassword(password);
   };
   const handleSubmit = (event) => {
-    SetResponse("");
-    console.log("sign in")  
+    SetResponse("loading...");
     event.preventDefault();
     UserLogin({ email: Email, password: Password }).then((resposne) => {
-      SetResponse(resposne);
+      SetResponse("Signed In!");
     });
   };
   return (
@@ -78,13 +61,11 @@ const SignIn = () => {
           value={Password}
         />
 
-        <button className="submit" type="submit">
-          {" "}
-          Sign In{" "}
-        </button>
+        <Button button_type={"inverted"} type="submit">
+          Sign In
+        </Button>
       </form>
       <p>{Response}</p>
-      <button className="buttons-container" onClick={func}></button>
     </div>
   );
 };
