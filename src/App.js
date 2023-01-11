@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteMethod, getAllTask } from "./utils/backend/api";
 import {Fetch_Task_List} from "./store/tasks/tasks.action"
 import { TasksComponent } from "./component/tasks/tasks.component";
+import { Home } from "./routes/home/home.component";
 
 const App = () => {
   const CurrentUserdata = useSelector((state)=>state.user.CurrentUserdata);
@@ -40,6 +41,7 @@ const App = () => {
     <div className="app-container">
       <Routes>
         <Route path="/" element={<Navigation />}>
+        <Route index element={<Home/>}/>
         <Route path="signin" element={<Auth />} />
         <Route path="tasks" element={<TasksComponent/>}/>
         </Route>
